@@ -22,6 +22,7 @@ const store= configureStore({
       icon: iconslice.reducer
    }
 })
+export type RootState = ReturnType<typeof store.getState>
 
 // export default the store 
 export default store

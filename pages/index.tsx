@@ -7,10 +7,15 @@ import { iconAction } from "../store/authSlice";
 import sun24 from "../images/sun-24.png";
 import moon30 from "../images/moon-30.png";
 import Image from 'next/image'
+import { RootState } from '../store/authSlice';
+
+interface InterfaceIcon {
+  icon: string;
+}
 
 const Home: NextPage = () => {
   const dispatcher = useDispatch()
-  let icon = useSelector(state => state.icon)
+  let icon:InterfaceIcon = useSelector<RootState, InterfaceIcon>(state => state.icon)
 
   function changeIcon() {
     icon.icon === "moon" ? dispatcher(iconAction.iconSun()) : dispatcher(iconAction.iconMoon())
