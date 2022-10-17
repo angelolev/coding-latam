@@ -14,10 +14,10 @@ export default async function handler(
   
   await getDocs(dbInstance)
       .then((data) => {
-        const courses:IRecommendedCourse[] = data.docs.map((item)=> {
+        const courses:IRecommendedCourse = data.docs.map((item)=> {
             return {...item.data(), id: item.id}
         })
-        res.json({ courses })
+        res.json({courses})
       })
       .catch((err)=> {
         res.status(404).end()

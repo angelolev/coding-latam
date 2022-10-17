@@ -7,7 +7,7 @@ import { IRecommendedCourse } from "../../models/recommended-course";
 // import { getRecommendedCoursesFirebase } from "../../../services/recommended-courses-service";
 // import CardSkeleton from "../Skeletons/CardSkeleton";
 
-const RecommendedCourses = ({coursesList}: IRecommendedCourse[]) => {
+const RecommendedCourses = ({coursesList}: any) => {
   // const dispatch = useDispatch();
   // const recommendedCourses = useSelector((state) => state.recommendedCourses);
   
@@ -42,7 +42,7 @@ const RecommendedCourses = ({coursesList}: IRecommendedCourse[]) => {
           </p>
         </div>
         {coursesList !== null ? (
-          coursesList.map((course) => (
+          coursesList.map((course: IRecommendedCourse) => (
             <RecommendedCourseCard key={course.id} {...course}/>
           ))
         ) : (

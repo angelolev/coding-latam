@@ -52,13 +52,12 @@ const Home: NextPage = (props) => {
 //   })
 // }
 
-export async function getServerSideProps (context) {
-  const { params } = context
+export async function getServerSideProps () {
   const apiResponse = await fetch('http://localhost:3000/api/recommendedCourses')
   
   if(apiResponse.ok) {
     const props = await apiResponse.json()
-    return {props}
+    return { props }
   }
 }
 
