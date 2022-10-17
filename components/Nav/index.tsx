@@ -15,7 +15,7 @@ const goToHome = () => {
 //   navMenu.classList.toggle("show");
 // };
 
-const Nav = (props) => {
+const Nav = () => {
   //   const dispatch = useDispatch();
   //   const currentUser = useSelector((state) => state.auth);
   //   const [currentLink, setCurrentLink] = useState("/login");
