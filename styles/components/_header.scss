@@ -7,28 +7,28 @@
   background-repeat: no-repeat;
 
   @include breakpoint($xs-ls) {
-    background-position: 100% 140px;
+    background-position: 100% 14rem;
   }
 
   @include breakpoint($sm) {
-    background-position: 100% 205px;
+    background-position: 100% 20.5rem;
   }
 
   @include breakpoint($lg) {
-    background-position: 100% 140px;
+    background-position: 100% 14rem;
   }
 
   a {
     display: block;
-    margin: 20px auto;
-    max-width: 220px;
+    margin: 2rem auto;
+    max-width: 22rem;
   }
 
   h1 {
-    margin: 0 auto 30px;
+    margin: 0 auto 3rem;
 
     @include breakpoint($sm) {
-      margin: 0 auto 50px;
+      margin: 0 auto 5rem;
     }
 
     span {
@@ -36,11 +36,11 @@
 
       &:before {
         content: "";
-        bottom: -9px;
-        background-size: 20px 20px;
-        height: 5px;
+        bottom: -.9rem;
+        background-size: 2rem 2rem;
+        height: .5rem;
         background-color: $color-primary;
-        border-radius: 6px;
+        border-radius: .6rem;
         position: absolute;
         left: 0;
         width: 100%;
@@ -49,38 +49,38 @@
   }
 
   p {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
 
     @include breakpoint($sm) {
-      font-size: 20px;
-      max-width: 290px;
+      font-size: 2rem;
+      max-width: 29rem;
     }
   }
 
   &__content {
-    padding: 60px 40px 20px;
+    padding: 6rem 4rem 2rem;
     text-align: center;
 
     @include breakpoint($xs-ls) {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 55px 40px 120px;
+      padding: 5.5rem 4rem 12rem;
     }
 
     @include breakpoint($sm) {
-      padding: 70px 40px 80px;
+      padding: 7rem 4rem 8rem;
     }
 
     @include breakpoint($md) {
-      max-width: 920px;
+      max-width: 92rem;
       margin: 0 auto;
     }
 
     @include breakpoint($lg) {
-      max-width: 1170px;
-      padding: 60px 40px;
+      max-width: 117rem;
+      padding: 6rem 4rem;
     }
   }
 
@@ -96,7 +96,7 @@
   }
 
   &__logos {
-    padding-top: 30px;
+    padding-top: 3rem;
 
     @include breakpoint($xs-ls) {
       padding: 0;
@@ -105,23 +105,23 @@
     img {
       display: block;
       margin-left: auto;
-      max-width: 80px;
+      max-width: 8rem;
       animation: growing 1.5s alternate infinite ease-in;
 
       @include breakpoint($xs-ls) {
-        max-width: 100px;
+        max-width: 10rem;
       }
 
       @include breakpoint($sm) {
-        max-width: 130px;
+        max-width: 13rem;
       }
 
       @include breakpoint($md) {
-        max-width: 160px;
+        max-width: 16rem;
       }
 
       @include breakpoint($lg) {
-        max-width: 220px;
+        max-width: 22rem;
       }
     }
   }

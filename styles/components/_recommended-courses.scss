@@ -1,47 +1,47 @@
 .recommended-courses {
     background: url("../../images/wave2.svg");
     background-repeat: no-repeat;
-    padding: 100px 20px;
+    padding: 10rem 2rem;
   
     @include breakpoint($sm) {
-      padding: 60px 20px;
+      padding: 6rem 2rem;
     }
   
     @include breakpoint($md) {
-      background-position: 100% -50px;
+      background-position: 100% -5rem;
     }
   
     &__intro {
-      margin-top: 25px;
+      margin-top: 2.5rem;
       width: 100%;
   
       @include breakpoint($sm) {
-        margin-top: 100px;
+        margin-top: 10rem;
       }
   
       @include breakpoint($md) {
-        margin: 150px 0 50px;
+        margin: 15rem 0 5rem;
       }
   
       @include breakpoint($lg) {
-        margin: 210px 0 50px;
+        margin: 21rem 0 5rem;
       }
   
       p {
         text-align: center;
-        line-height: 24px;
-        margin-bottom: 20px;
-        font-size: 16px;
+        line-height: 2.4rem;
+        margin-bottom: 2rem;
+        font-size: 1.6rem;
   
         @include breakpoint($sm) {
-          margin-bottom: 40px;
+          margin-bottom: 4rem;
         }
   
         @include breakpoint($md) {
-          font-size: 20px;
-          line-height: 28px;
-          margin: 0 auto 30px;
-          max-width: 600px;
+          font-size: 2rem;
+          line-height: 2.8rem;
+          margin: 0 auto 3rem;
+          max-width: 60rem;
         }
       }
     }
@@ -56,11 +56,11 @@
       }
   
       @include breakpoint($md) {
-        max-width: 920px;
+        max-width: 92rem;
       }
   
       @include breakpoint($lg) {
-        max-width: 1170px;
+        max-width: 117rem;
       }
     }
   }

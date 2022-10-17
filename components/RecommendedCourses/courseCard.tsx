@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import courseImage from '../../images/web-dev.png'
 // import Button from "../../elements/Button/Button";
 
 interface CourseCard {
@@ -34,9 +33,7 @@ const RecommendedCourseCard = (props: CourseCard) => {
         </span>
       )}
       <div className="recommended-courses__course-image">
-        {/* <img src={`./images/${image}`} alt="" /> */}
-        {/* <Image src={`/images/${image}`} layout="fill" alt="Terminal" /> */}
-        <Image src={courseImage} layout="responsive" alt="Terminal" />
+        <Image src={`/images/${image}`} width={245} height={163} alt="" />
       </div>
       <div className="recommended-courses__course-title">
         <h3>{title}</h3>
@@ -46,9 +43,6 @@ const RecommendedCourseCard = (props: CourseCard) => {
       </div>
       {status ? (
         <div className="recommended-courses__course-button">
-          {/* <Link className="yellow" to={link}>
-            Ir al Curso
-          </Link> */}
           <Link href={link}>
             <a className="yellow">Ir al Curso</a>
           </Link>

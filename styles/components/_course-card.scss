@@ -1,19 +1,19 @@
 .recommended-courses__course {
     background-color: $color-white;
-    box-shadow: 0 2px 12px 0px rgba(60, 60, 60, 0.1);
+    box-shadow: 0 .2rem 1.2rem 0 rgba(60, 60, 60, 0.1);
     cursor: pointer;
-    margin: 0 auto 30px;
-    max-width: 290px;
-    padding: 10px 15px;
+    margin: 0 auto 3rem;
+    max-width: 29rem;
+    padding: 1rem 1.5rem;
     position: relative;
     transition: all ease 500ms;
-    min-height: 350px;
+    min-height: 35rem;
   
     &:hover {
       // outline: auto;
       // outline-color: $color-primary;
       transform: translateY(-0.25rem);
-      box-shadow: 0 2px 12px 0px rgba(60, 60, 60, 0.42);
+      box-shadow: 0 .2rem 1.2rem 0 rgba(60, 60, 60, 0.42);
     }
   
     &.unavailable {
@@ -22,30 +22,31 @@
     }
   
     @include breakpoint($sm) {
-      max-width: 310px;
+      max-width: 31rem;
     }
   
     @include breakpoint($md) {
-      width: 350px;
+      width: 35rem;
     }
   
     @include breakpoint($lg) {
-      max-width: 275px;
+      max-width: 27.5rem;
     }
   
     &-title {
-      min-height: 50px;
+      min-height: 5rem;
+
       h3 {
-        font-size: 18px;
+        font-size: 1.8rem;
         font-weight: bold;
-        margin: 5px 0 15px;
+        margin: .5rem 0 1.5rem;
   
         @include breakpoint($sm) {
-          font-size: 16px;
+          font-size: 1.6rem;
         }
   
         @include breakpoint($md) {
-          font-size: 18px;
+          font-size: 1.8rem;
         }
   
         @media (prefers-color-scheme: dark) {
@@ -56,16 +57,16 @@
   
     &-description {
       @include breakpoint($md) {
-        min-height: 75px;
+        min-height: 7.5rem;
       }
   
       p {
-        font-size: 14px;
-        line-height: 20px;
-        margin-bottom: 20px;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        margin-bottom: 2rem;
   
         @include breakpoint($md) {
-          font-size: 16px;
+          font-size: 1.6rem;
         }
   
         @media (prefers-color-scheme: dark) {
@@ -77,10 +78,10 @@
     &-button {
       a {
         display: block;
-        font-size: 16px;
+        font-size: 1.6rem;
         margin-left: auto;
-        max-width: 110px;
-        padding: 8px;
+        max-width: 11rem;
+        padding: .8rem;
         text-align: center;
         width: auto;
       }
@@ -90,9 +91,9 @@
       background: salmon;
       color: $color-white;
       position: absolute;
-      top: 10px;
-      right: 15px;
-      padding: 8px 15px;
+      top: 1rem;
+      right: 1.5rem;
+      padding: .8rem 1.5rem;
   
       &.available {
         background-color: #27ae60;

@@ -1,33 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SocialIcon from "../SocialIcon";
+import { socialNetworks } from "../../utils/social-networks";
 
-const d = new Date();
-const year = d.getFullYear();
+const Footer = () => {
+  const getYear = () => {
+    const d = new Date();
+    return d.getFullYear();
+  };
 
-const Footer = () => (
-  <footer className='footer'>
-    <div className="container">
-      <div className='footer__social'>
-        <SocialIcon
-          link="https://www.facebook.com/codinglatam/"
-          name="facebook"
-        />
-        <SocialIcon
-          link="https://www.instagram.com/codinglatam/"
-          name="instagram"
-        />
-        <SocialIcon link="https://discord.gg/7bpGcDT" name="discord" />
-        <SocialIcon link="https://twitter.com/codinglatam" name="twitter" />
-        <SocialIcon
-          link="https://www.youtube.com/channel/UCS0emIw9cgv9RIMowHlq3ng"
-          name="youtube"
-        />
+  useEffect(() => {
+    getYear();
+  }, []);
+
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer__social">
+          {socialNetworks.map((item) => (
+            <SocialIcon key={item.id} link={item.link} name={item.name} />
+          ))}
+        </div>
+        <div className="footer__content">
+          <p>© Coding Latam {getYear()} - Todos los derechos reservados</p>
+        </div>
       </div>
-      <div className='footer__content'>
-        <p>© Coding Latam {year} - Todos los derechos reservados</p>
-      </div>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};
 
 export default Footer;

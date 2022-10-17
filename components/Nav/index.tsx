@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import logo from "./logo.png";
 // import { useSelector, useDispatch } from "react-redux";
 // import { logOutFirebase } from "../../../store/actions/auth";
 import Image from "next/image";
@@ -36,12 +35,14 @@ const Nav = () => {
           <div className='nav__top'>
             <div className='nav__logo' id="burger">
               <div className="nav__image">
-              <Image
-                src={logo}
-                alt=""
-                onClick={goToHome}
-                className='nav__image'
-              />
+                <Image
+                  src="/images/logo.png"
+                  alt=""
+                  width={50}
+                  height={50}
+                  onClick={goToHome}
+                  className='nav__image'
+                />
               </div>
               <span>Coding Latam</span>
             </div>

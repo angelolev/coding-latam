@@ -3,7 +3,7 @@
     ul {
       li {
         color: $color-blue-dark;
-        font-size: 20px;
+        font-size: 2rem;
 
         a {
           display: flex;
@@ -13,8 +13,8 @@
 
           img {
             border-radius: 50%;
-            margin-right: 5px;
-            max-width: 35px;
+            margin-right: .5rem;
+            max-width: 3.5rem;
           }
         }
       }
@@ -29,11 +29,11 @@
   }
 
   &__content {
-    border-bottom: 1px solid $color-gray;
-    padding: 10px 15px;
+    border-bottom: .1rem solid $color-gray;
+    padding: 1rem 1.5rem;
 
     @include breakpoint($sm) {
-      padding: 10px 0;
+      padding: 1rem 0;
     }
   }
 
@@ -53,33 +53,40 @@
     ul {
       display: flex;
       align-items: center;
+      list-style: none;
 
       li {
-        display: inline-block;
-        padding: 0 30px 0 0;
+        padding: 0 2rem;
 
         &.logout {
           cursor: pointer;
-          padding: 5px 15px;
+          padding: .5rem 1.5rem;
         }
 
         a {
+          display: inline-block;
           color: $color-blue-dark;
-          display: flex;
-          align-items: center;
-          transition: all 0.3s;
+          text-decoration: none;
+
+          &:after {
+            content: '';
+            display: block;
+            width: 0;
+            height: .15rem;
+            background: $color-blue-dark;
+            transition: width .3s;
+          }
 
           &:hover {
-            box-shadow: none;
-            padding-bottom: 5px;
-            border-bottom: 1px solid $color-blue-dark;
-            transition: border 0.3s;
+            &:after {
+              width: 100%;
+            }
           }
 
           img {
             border-radius: 50%;
-            margin-right: 5px;
-            max-width: 35px;
+            margin-right: .5rem;
+            max-width: 3.5rem;
           }
 
           // @media (prefers-color-scheme: dark) {
@@ -109,7 +116,7 @@
     }
 
     img {
-      max-width: 50px;
+      max-width: 5rem;
       cursor: pointer;
     }
 
@@ -138,24 +145,24 @@
 
       button {
         background-color: $color-blue-dark;
-        font-size: 20px;
+        font-size: 2rem;
         position: absolute;
         right: 0;
-        padding: 10px 20px;
+        padding: 1rem 2rem;
       }
     }
 
     li {
       display: block;
-      padding: 20px 0;
+      padding: 2rem 0;
 
       &:first-of-type {
-        margin-top: 40px;
+        margin-top: 4rem;
       }
 
       a {
         color: $color-blue-dark;
-        font-size: 20px;
+        font-size: 2rem;
       }
     }
   }

@@ -1,27 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import RecommendedCourseCard from "./courseCard";
+import { app, database } from "../../firebase/client"
+import { collection, getDocs } from "firebase/firestore";
+import { IRecommendedCourse } from "../../models/recommended-course";
 // import { useDispatch, useSelector } from "react-redux";
 // import { getRecommendedCoursesFirebase } from "../../../services/recommended-courses-service";
 // import CardSkeleton from "../Skeletons/CardSkeleton";
 
-const RecommendedCourses = () => {
+const RecommendedCourses = ({coursesList}: IRecommendedCourse[]) => {
   // const dispatch = useDispatch();
   // const recommendedCourses = useSelector((state) => state.recommendedCourses);
+  
+  // const [recommendedCourses, setRecommendedCourses] = useState(coursesList)
+
+  // const dbInstance = collection(database, 'recommendedCourses');
+  // const getCourses = () => {
+  //   getDocs(dbInstance)
+  //     .then((data) => {
+  //       setRecommendedCourses(data.docs.map((item) => {
+  //         return {...item.data(), id: item.id}
+  //       }))
+  //     })
+  // }
+
+  // useEffect(() => {
+  //   setRecommendedCourses(coursesList)
+  // }, [])
 
   // useEffect(() => {
   //   dispatch(getRecommendedCoursesFirebase());
   // }, []);
-  const recommendedCourses = [
-    {
-      id: 0,
-      status: 'available',
-      image: 'web-dev.png',
-      title: 'Curs ode HTML',
-      description: 'Description',
-      link: "https://lahaus.com",
-      releaseDate: '11/07/2022'
-    }
-  ]
 
   return (
     <div className="recommended-courses">
@@ -33,8 +41,8 @@ const RecommendedCourses = () => {
             a los profesionales que inician en el mundo del desarrollo web.
           </p>
         </div>
-        {recommendedCourses !== null ? (
-          recommendedCourses.map((course) => (
+        {coursesList !== null ? (
+          coursesList.map((course) => (
             <RecommendedCourseCard key={course.id} {...course}/>
           ))
         ) : (
