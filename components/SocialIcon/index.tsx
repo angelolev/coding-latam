@@ -1,6 +1,11 @@
 import React from "react";
 
-const SocialIcon = ({ name, link }) => {
+interface ISocialIcon {
+  name: string;
+  link: string;
+}
+
+const SocialIcon = ({ name, link }: ISocialIcon) => {
   return (
     <>
       <a target="_blank" href={link} rel="noopener noreferrer">
