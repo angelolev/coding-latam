@@ -10,10 +10,10 @@ const goToHome = () => {
   window.location.href = "/";
 };
 
-const showMenu = () => {
-  let navMenu = document.getElementById("navMenu");
-  navMenu.classList.toggle("show");
-};
+// const showMenu = () => {
+//   let navMenu = document.getElementById("navMenu");
+//   navMenu.classList.toggle("show");
+// };
 
 const Nav = (props) => {
   //   const dispatch = useDispatch();
@@ -90,16 +90,16 @@ const Nav = (props) => {
               </ul>
             </div>
             <div className='nav__button'>
-              <button className="btn yellow scrollable" onClick={showMenu}>
+              {/* <button className="btn yellow scrollable" onClick={showMenu}>
                 Menú
-              </button>
+              </button> */}
             </div>
           </div>
           <div className='nav__bottom'>
             <ul className="nav__menu fadeIn" id="navMenu">
-              <button id="navClose" onClick={showMenu}>
+              {/* <button id="navClose" onClick={showMenu}>
                 X
-              </button>
+              </button> */}
 
               <li>
                 <Link href="/clases">Clases</Link>
