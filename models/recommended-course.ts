@@ -7,3 +7,7 @@ export interface IRecommendedCourse {
     link: string;
     releaseDate: string;
 }
+
+export interface IRecommendedCourses {
+    coursesList: IRecommendedCourse[]
+}

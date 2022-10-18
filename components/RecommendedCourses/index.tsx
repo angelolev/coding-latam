@@ -7,30 +7,11 @@ import { IRecommendedCourse } from "../../models/recommended-course";
 // import { getRecommendedCoursesFirebase } from "../../../services/recommended-courses-service";
 // import CardSkeleton from "../Skeletons/CardSkeleton";
 
-const RecommendedCourses = ({coursesList}: any) => {
-  // const dispatch = useDispatch();
-  // const recommendedCourses = useSelector((state) => state.recommendedCourses);
-  
-  // const [recommendedCourses, setRecommendedCourses] = useState(coursesList)
+interface IRecommendedCourses {
+  coursesList: IRecommendedCourse[]
+}
 
-  // const dbInstance = collection(database, 'recommendedCourses');
-  // const getCourses = () => {
-  //   getDocs(dbInstance)
-  //     .then((data) => {
-  //       setRecommendedCourses(data.docs.map((item) => {
-  //         return {...item.data(), id: item.id}
-  //       }))
-  //     })
-  // }
-
-  // useEffect(() => {
-  //   setRecommendedCourses(coursesList)
-  // }, [])
-
-  // useEffect(() => {
-  //   dispatch(getRecommendedCoursesFirebase());
-  // }, []);
-
+const RecommendedCourses: React.FC<IRecommendedCourses> = ({coursesList}: any) => {
   return (
     <div className="recommended-courses">
       <div className="recommended-courses__content">
@@ -46,7 +27,6 @@ const RecommendedCourses = ({coursesList}: any) => {
             <RecommendedCourseCard key={course.id} {...course}/>
           ))
         ) : (
-          // <CardSkeleton />
           <p>Cargando...</p>
         )}
       </div>

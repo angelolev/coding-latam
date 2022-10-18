@@ -11,15 +11,17 @@ import Image from 'next/image'
 import { RootState } from '../store/authSlice';
 import { useAppSelector, useAppDispatch } from '../store/hooks'
 import { decrement, increment } from '../store/slices/counterSlice'
+import { IRecommendedCourse, IRecommendedCourses } from '../models/recommended-course';
 
 interface InterfaceIcon {
   icon: string;
 }
 
-const Home: NextPage = (props) => {
+const Home: NextPage<{coursesList: IRecommendedCourse[]}> = (props:IRecommendedCourses ) => {
   // The `state` arg is correctly typed as `RootState` already
   // const count = useAppSelector((state) => state.counter.value)
   // const dispatch = useAppDispatch()
+
 
   const dispatcher = useDispatch()
   let icon:InterfaceIcon = useSelector<RootState, InterfaceIcon>(state => state.icon)
@@ -40,7 +42,7 @@ const Home: NextPage = (props) => {
           />
         </div> */}
       <Header />
-      <RecommendedCourses coursesList={props.courses} />
+      <RecommendedCourses coursesList={props.coursesList} />
       <JoinUs />
     </Layout>
   )
@@ -56,8 +58,12 @@ export async function getServerSideProps () {
   const apiResponse = await fetch('http://localhost:3000/api/recommendedCourses')
   
   if(apiResponse.ok) {
-    const props = await apiResponse.json()
-    return { props }
+    const courses = await apiResponse.json()
+    return { 
+      props : {
+        coursesList: courses
+      }
+    }
   }
 }
 

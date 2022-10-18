@@ -7,17 +7,26 @@ import { IRecommendedCourse } from '../../models/recommended-course'
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<IRecommendedCourse>
+  res: NextApiResponse<IRecommendedCourse[]>
 ) {
   const { query } = req
   const dbInstance = collection(database, 'recommendedCourses');
   
   await getDocs(dbInstance)
       .then((data) => {
-        const courses:IRecommendedCourse = data.docs.map((item)=> {
-            return {...item.data(), id: item.id}
+        const courses: IRecommendedCourse[] = data.docs.map((item)=> {
+          // return ({ ...item.data(), id: item.id });
+          return ({
+            status: item.data().status,
+            image: item.data().image,
+            releaseDate: item.data().releaseDate,
+            description: item.data().description,
+            link: item.data().link,
+            title: item.data().title,
+            id: item.id
+          })
         })
-        res.json({courses})
+        res.json([...courses])
       })
       .catch((err)=> {
         res.status(404).end()
