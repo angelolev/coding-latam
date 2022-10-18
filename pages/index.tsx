@@ -13,6 +13,9 @@ import { useAppSelector, useAppDispatch } from '../store/hooks'
 import { decrement, increment } from '../store/slices/counterSlice'
 import { IRecommendedCourse, IRecommendedCourses } from '../models/recommended-course';
 
+import { database } from "../firebase/client"
+import { firestore } from '../firebase/admin'
+import { collection, getDocs } from "firebase/firestore";
 interface InterfaceIcon {
   icon: string;
 }
@@ -55,16 +58,45 @@ const Home: NextPage<{coursesList: IRecommendedCourse[]}> = (props:IRecommendedC
 // }
 
 export async function getServerSideProps () {
-  const apiResponse = await fetch('http://localhost:3000/api/recommendedCourses')
+  // const apiResponse = await fetch('http://localhost:3000/api/recommendedCourses')
   
-  if(apiResponse.ok) {
-    const courses = await apiResponse.json()
-    return { 
-      props : {
-        coursesList: courses
+  // if(apiResponse.ok) {
+  //   const courses = await apiResponse.json()
+  //   return { 
+  //     props : {
+  //       coursesList: courses
+  //     }
+  //   }
+  // }
+  const dbInstance = collection(database, 'recommendedCourses');
+  
+  const apiResponse = await getDocs(dbInstance)
+      .then((data) => {
+        const courses: IRecommendedCourse[] = data.docs.map((item)=> {
+          // return ({ ...item.data(), id: item.id });
+          return ({
+            status: item.data().status,
+            image: item.data().image,
+            releaseDate: item.data().releaseDate,
+            description: item.data().description,
+            link: item.data().link,
+            title: item.data().title,
+            id: item.id
+          })
+        })
+        // res.json([...courses])
+        return courses
+      })
+      .catch((err)=> {
+        console.log(err)
+        // res.status(404).end()
+      })
+
+      return { 
+        props : {
+          coursesList: apiResponse
+        }
       }
-    }
-  }
 }
 
 // export async function getStaticPaths () {
