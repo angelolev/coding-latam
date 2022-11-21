@@ -2,10 +2,13 @@ import "../styles/index.scss";
 import type { AppProps } from 'next/app'
 import { Provider } from "react-redux";
 import store from "../store/authSlice";
+import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return <Provider store={store}>
-    <Component {...pageProps} />
+    <Layout title="Coding Latam | Comunidad de desarrolladores">
+      <Component {...pageProps} />
+    </Layout>
   </Provider>
 }
 

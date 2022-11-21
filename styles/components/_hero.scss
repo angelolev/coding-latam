@@ -1,0 +1,51 @@
+.hero {
+    background-color: rgba(255, 207, 0, 0.14);
+  
+    &__content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      padding: 0 0 50px;
+  
+      @include breakpoint($sm) {
+        padding: 50px 0;
+      }
+  
+      @include breakpoint($lg) {
+        max-width: 1170px;
+        margin: 0 auto;
+      }
+    }
+  
+    &__image {
+      width: 100%;
+  
+      @include breakpoint($sm) {
+        width: 40%;
+      }
+  
+      img {
+        margin: 0 auto;
+        max-width: 200px;
+        display: block;
+      }
+    }
+  
+    &__text {
+      width: 100%;
+  
+      @include breakpoint($sm) {
+        padding: 0 30px;
+        width: 60%;
+      }
+  
+      h1 {
+        font-size: 32px;
+        max-width: 90%;
+        margin: 0 auto;
+      }
+    }
+  }
+  

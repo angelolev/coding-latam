@@ -1,0 +1,39 @@
+.category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+    padding: 0;
+    list-style: none;
+  
+    &__item {
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      margin: 0 15px 10px 0;
+      opacity: 0.5;
+      padding: 10px;
+  
+      &.css {
+        background-color: rgb(255, 87, 87);
+      }
+  
+      &.html {
+        background-color: rgb(40, 128, 185);
+      }
+  
+      &.responsive-design {
+        background-color: rgb(127, 218, 87);
+      }
+  
+      &.flexbox {
+        background-color: rgb(255, 87, 87);
+      }
+  
+      &:hover {
+        opacity: 0.9;
+        transition: all 0.5s;
+      }
+    }
+  }
+  

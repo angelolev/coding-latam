@@ -34,7 +34,7 @@ const Home: NextPage<{coursesList: IRecommendedCourse[]}> = (props:IRecommendedC
   }
 
   return (
-    <Layout title="Coding Latam | Comunidad de desarrolladores">
+    <>
       {/* <div onClick={changeIcon} className={`iconBox ${icon.icon}`}>
           <Image
             width={30}
@@ -47,7 +47,7 @@ const Home: NextPage<{coursesList: IRecommendedCourse[]}> = (props:IRecommendedC
       <Header />
       <RecommendedCourses coursesList={props.coursesList} />
       <JoinUs />
-    </Layout>
+    </>
   )
 }
 
