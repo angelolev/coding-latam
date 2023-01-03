@@ -1,20 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-// import Button from "../../elements/Button/Button";
+import { IRecommendedCourse } from "../../models";
 
-interface CourseCard {
-  status: string;
-  image: string;
-  title: string;
-  description: string;
-  link: string;
-  releaseDate: string;
-}
-
-const RecommendedCourseCard = (props: CourseCard) => {
-  const { status, image, title, description, link, releaseDate } = props;
-
+const CourseCard: React.FC<IRecommendedCourse> = ({
+  status,
+  image,
+  title,
+  description,
+  link,
+  releaseDate,
+}) => {
   let courseCardClasses = "recommended-courses__course";
 
   if (!status) {
@@ -54,4 +50,4 @@ const RecommendedCourseCard = (props: CourseCard) => {
   );
 };
 
-export default RecommendedCourseCard;
+export default CourseCard;

@@ -2,9 +2,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-interface Props {}
+export interface JoinUsInterface {}
 
-const JoinUs: React.FC<Props> = () => {
+const JoinUs: React.FC<JoinUsInterface> = () => {
   return (
     <div className="join-us" id="join">
       <div className="container">
@@ -12,12 +12,7 @@ const JoinUs: React.FC<Props> = () => {
         <p>En Coding Latam tienes 2 maneras de ser parte de la comunidad:</p>
         <div className="item">
           <div className="item__image">
-            <Image
-                src="/images/student.svg"
-                alt=""
-                width={80}
-                height={80}
-            />
+            <Image src="/images/student.svg" alt="" width={80} height={80} />
           </div>
           <div className="item__description">
             <h3>Estudiante</h3>
@@ -37,12 +32,7 @@ const JoinUs: React.FC<Props> = () => {
         </div>
         <div className="item">
           <div className="item__image">
-            <Image
-                src="/images/teacher.svg"
-                alt=""
-                width={80}
-                height={80}
-            />
+            <Image src="/images/teacher.svg" alt="" width={80} height={80} />
           </div>
           <div className="item__description">
             <h3>Mentor</h3>

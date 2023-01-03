@@ -1,0 +1,21 @@
+.lessons {
+  padding: 30px 20px;
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__description {
+    margin-bottom: 20px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    @include breakpoint($md) {
+      justify-content: flex-start;
+    }
+  }
+}

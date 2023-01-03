@@ -1,39 +1,20 @@
-import React, { useEffect, useState } from "react";
-// import { useSelector, useDispatch } from "react-redux";
-// import { logOutFirebase } from "../../../store/actions/auth";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-// import styles from "./Nav.module.scss";
 
-const goToHome = () => {
-  window.location.href = "/";
-};
+export interface NavInterface {}
 
-// const showMenu = () => {
-//   let navMenu = document.getElementById("navMenu");
-//   navMenu.classList.toggle("show");
-// };
-
-const Nav = () => {
-  //   const dispatch = useDispatch();
-  //   const currentUser = useSelector((state) => state.auth);
-  //   const [currentLink, setCurrentLink] = useState("/login");
-  //   const userLogout = () => {
-  //     dispatch(logOutFirebase());
-  //   };
-
-  //   useEffect(() => {
-  //     if (currentUser?.displayName) {
-  //       setCurrentLink("/admin");
-  //     }
-  //   }, [currentUser]);
+const Nav: React.FC<NavInterface> = () => {
+  const goToHome = () => {
+    window.location.href = "/";
+  };
 
   return (
-    <nav className='nav'>
+    <nav className="nav">
       <div className="container">
-        <div className='nav__content'>
-          <div className='nav__top'>
-            <div className='nav__logo' id="burger">
+        <div className="nav__content">
+          <div className="nav__top">
+            <div className="nav__logo" id="burger">
               <div className="nav__image">
                 <Image
                   src="/images/logo.png"
@@ -41,12 +22,12 @@ const Nav = () => {
                   width={50}
                   height={50}
                   onClick={goToHome}
-                  className='nav__image'
+                  className="nav__image"
                 />
               </div>
               <span>Coding Latam</span>
             </div>
-            <div className='nav__links'>
+            <div className="nav__links">
               <ul>
                 <li>
                   <Link href="/clases">Clases</Link>
@@ -72,35 +53,35 @@ const Nav = () => {
                 <li>
                   {/* <Link href="/"> */}
                   {/* <Image
-                      src={currentUser.photoURL}
-                      alt={currentUser.displayName}
-                    /> */}
+						  src={currentUser.photoURL}
+						  alt={currentUser.displayName}
+						/> */}
 
                   {/* {currentUser?.displayName
-                      ? currentUser.displayName
-                      : "Iniciar sesión"} */}
+						  ? currentUser.displayName
+						  : "Iniciar sesión"} */}
                   {/* </Link> */}
                 </li>
                 {/* {currentUser?.displayName ? (
-                  <li className="btn yellow logout" onClick={userLogout}>
-                    Salir
-                  </li>
-                ) : (
-                  false
-                )} */}
+					  <li className="btn yellow logout" onClick={userLogout}>
+						Salir
+					  </li>
+					) : (
+					  false
+					)} */}
               </ul>
             </div>
-            <div className='nav__button'>
+            <div className="nav__button">
               {/* <button className="btn yellow scrollable" onClick={showMenu}>
-                Menú
-              </button> */}
+					Menú
+				  </button> */}
             </div>
           </div>
-          <div className='nav__bottom'>
+          <div className="nav__bottom">
             <ul className="nav__menu fadeIn" id="navMenu">
               {/* <button id="navClose" onClick={showMenu}>
-                X
-              </button> */}
+					X
+				  </button> */}
 
               <li>
                 <Link href="/clases">Clases</Link>
@@ -126,20 +107,20 @@ const Nav = () => {
               <li>
                 {/* <Link href="/"> */}
                 {/* <Image
-                    src={currentUser.photoURL}
-                    alt={currentUser.displayName}
-                  /> */}
+						src={currentUser.photoURL}
+						alt={currentUser.displayName}
+					  /> */}
 
                 {/* {currentUser?.displayName
-                    ? currentUser.displayName
-                    : "Iniciar sesión"} */}
+						? currentUser.displayName
+						: "Iniciar sesión"} */}
                 {/* </Link> */}
               </li>
               {/* {currentUser?.displayName ? (
-                <li onClick={userLogout}>Salir</li>
-              ) : (
-                false
-              )} */}
+					<li onClick={userLogout}>Salir</li>
+				  ) : (
+					false
+				  )} */}
             </ul>
           </div>
         </div>
