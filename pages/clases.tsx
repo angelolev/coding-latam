@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { CategoryFilter, LessonCard } from "../components";
 import { Hero } from "../components/Hero";
 import { ILesson } from "../models";
+import { getFirebaseData, getFirebaseDataOrdered } from "../utils";
 
 interface LessonsPageProps {
   lessons: ILesson[];
@@ -19,6 +20,7 @@ interface LessonsPageProps {
 // import { useParams } from "react-router";
 
 const Lessons: NextPage<LessonsPageProps> = ({ lessons }) => {
+  console.log(lessons, "clases");
   //   const dispatch = useDispatch();
   //   const sessions = useSelector((state) => state.lessons);
   const [currentType, setCurrentType] = useState(null);
@@ -112,9 +114,7 @@ const Lessons: NextPage<LessonsPageProps> = ({ lessons }) => {
 };
 
 export async function getServerSideProps() {
-  const apiResponse = await fetch("http://localhost:3000/api/lessons");
-
-  const lessons = await apiResponse.json();
+  const lessons = await getFirebaseDataOrdered("lessons", "type");
 
   return {
     props: {

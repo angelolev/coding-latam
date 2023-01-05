@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import React from "react";
 import { ILesson } from "../../models";
+import { getFirebaseData, getFirebaseDoc } from "../../utils";
 
 interface LessonPageProps {
   lesson: ILesson;
@@ -56,16 +57,20 @@ const Lesson: NextPage<LessonPageProps> = ({ lesson }) => {
   );
 };
 
-// export async function getServerSideProps() {
-//   const apiResponse = await fetch("http://localhost:3000/api/lessons");
+export async function getStaticPaths() {
+  const lessons = await getFirebaseData("lessons");
 
-//   const lessons = await apiResponse.json();
+  const paths = lessons.map((lesson) => ({
+    params: { id: lesson.id },
+  }));
 
-//   return {
-//     props: {
-//       lessons,
-//     },
-//   };
-// }
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const lesson = await getFirebaseDoc("lessons", params.id);
+
+  return { props: { lesson } };
+}
 
 export default Lesson;

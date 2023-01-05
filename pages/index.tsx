@@ -1,7 +1,9 @@
 import { NextPage } from "next";
 import { CourseCard, Header, JoinUs } from "../components";
 import { IRecommendedCourse } from "../models";
-
+import { collection, getDocs } from "firebase/firestore";
+import { database } from "../firebase/client";
+import { getFirebaseData, getFirebaseDoc } from "../utils";
 interface HomePageProps {
   coursesList: IRecommendedCourse[];
 }
@@ -44,16 +46,10 @@ const Home: NextPage<HomePageProps> = ({ coursesList }) => {
 };
 
 export async function getServerSideProps() {
-  const apiResponse = await fetch(
-    "http://localhost:3000/api/recommendedCourses"
-  );
-
-  const coursesList = await apiResponse.json();
+  const coursesList = await getFirebaseData("recommendedCourses");
 
   return {
-    props: {
-      coursesList,
-    },
+    props: { coursesList },
   };
 }
 

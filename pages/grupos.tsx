@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { IStudyGroup } from "../models";
 import { Hero } from "../components/Hero";
 import { NextPage } from "next";
 import { CategoryFilter, StudyGroup } from "../components";
+import { getFirebaseData } from "../utils";
 
 const Groups: NextPage = ({ categories, groups }) => {
   const handleFilter = () => {
@@ -17,7 +17,6 @@ const Groups: NextPage = ({ categories, groups }) => {
       />
 
       <section className="groups__description">
-        {/* {categories?.categories ? null : <Loader />} */}
         <ul className="groups__tags">
           <ul className="category-filter">
             <CategoryFilter
@@ -46,15 +45,8 @@ const Groups: NextPage = ({ categories, groups }) => {
 };
 
 export async function getServerSideProps() {
-  const [categoriesApiResponse, groupsApiResponse] = await Promise.all([
-    fetch("http://localhost:3000/api/categories"),
-    fetch("http://localhost:3000/api/groups"),
-  ]);
-
-  const [categories, groups] = await Promise.all([
-    categoriesApiResponse.json(),
-    groupsApiResponse.json(),
-  ]);
+  const groups = await getFirebaseData("groups");
+  const categories = await getFirebaseData("categories");
 
   return {
     props: {
