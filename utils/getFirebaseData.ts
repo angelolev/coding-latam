@@ -5,6 +5,7 @@ import {
   orderBy,
   getDoc,
   doc,
+  where,
 } from "firebase/firestore";
 import { database } from "../firebase/client";
 
@@ -36,4 +37,21 @@ export async function getFirebaseDoc(col: string, ref: string) {
   const docSnapshot = await getDoc(docRef);
 
   return docSnapshot.data();
+}
+
+export async function getFirebaseDataWithQuery(
+  col: string,
+  q: string,
+  qVal: string
+) {
+  console.log(qVal, "qval");
+  const colRef = collection(database, col);
+  const querySnapshot = await getDocs(query(colRef, where(q, "==", qVal)));
+
+  const response = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  return response;
 }
