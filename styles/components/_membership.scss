@@ -1,0 +1,50 @@
+.membership {
+  background: rgba(255, 204, 0, 0.09);
+  padding: 10px 15px;
+  margin: 0 0 40px;
+  border-radius: 3px;
+  box-shadow: 0 2px 12px 0px rgb(213, 213, 209);
+  // @media (prefers-color-scheme: dark) {
+  //   background: rgb(35, 156, 86);
+  // }
+  &__list {
+    padding: 20px 0;
+  }
+
+  &__item {
+    margin-bottom: 20px;
+    padding-left: 10px;
+
+    a {
+      color: $color-blue-dark;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      position: relative;
+
+      &::after {
+        content: "";
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        border-width: 0 0 1px;
+        border-style: solid;
+      }
+
+      // @media (prefers-color-scheme: dark) {
+      //   color: $color-white;
+      // }
+    }
+  }
+
+  &__description {
+    h3 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+  }
+}
