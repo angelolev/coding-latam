@@ -1,13 +1,21 @@
 import { NextPage } from "next";
+import Link from "next/link";
 import React from "react";
-import { ILesson } from "../../models";
-import { getFirebaseData, getFirebaseDoc } from "../../utils";
+import { Membership, Resource } from "../../components";
+import { ILesson, IResource } from "../../models";
+import {
+  getFirebaseData,
+  getFirebaseDataWithQuery,
+  getFirebaseDoc,
+} from "../../utils";
 
 interface LessonPageProps {
   lesson: ILesson;
+  resources: IResource[];
 }
 
-const Lesson: NextPage<LessonPageProps> = ({ lesson }) => {
+const Lesson: NextPage<LessonPageProps> = ({ lesson, resources }) => {
+  console.log(resources, "xd");
   return (
     <section className="lesson__video">
       <div className="container"></div>
@@ -32,7 +40,26 @@ const Lesson: NextPage<LessonPageProps> = ({ lesson }) => {
             <p>{lesson.description}</p>
           </div>
           <div className="lesson__video-link">
-            {/* <Link to={`/clases/${type}`}>Regresar</Link> */}
+            <Link href={`/clases/${lesson.type}`}>
+              <a>Regresar</a>
+            </Link>
+          </div>
+          <div className="lesson-resources">
+            <div className="lesson-resources__title">
+              <h3>Recursos de la clase</h3>
+            </div>
+            <div className="lesson-resources__list">
+              {resources.map((resource: IResource) => {
+                return (
+                  <Resource
+                    id={resource.id}
+                    key={resource.id}
+                    link={resource.link}
+                    title={resource.title}
+                  />
+                );
+              })}
+            </div>
           </div>
           {/* <Articles lessonId={lesson.id} /> */}
         </>
@@ -50,7 +77,7 @@ const Lesson: NextPage<LessonPageProps> = ({ lesson }) => {
           <h3>Cargando</h3>
         )} */}
 
-        {/* <Membership /> */}
+        <Membership />
         {/* <Certification /> */}
       </div>
     </section>
@@ -69,8 +96,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const lesson = await getFirebaseDoc("lessons", params.id);
+  const resources = await getFirebaseDataWithQuery(
+    "resources",
+    "session_id",
+    params.id
+  );
 
-  return { props: { lesson } };
+  return { props: { lesson, resources } };
 }
 
 export default Lesson;
