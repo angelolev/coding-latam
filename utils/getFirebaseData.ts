@@ -23,9 +23,7 @@ export async function getFirebaseData(col: string) {
 
 export async function getFirebaseDataOrdered(col: string, type: string) {
   const colRef = collection(database, col);
-  const querySnapshot = await getDocs(
-    query(colRef, orderBy(type), orderBy("title"))
-  );
+  const querySnapshot = await getDocs(query(colRef, orderBy(type)));
 
   const response = querySnapshot.docs.map((doc) => ({
     id: doc.id,
@@ -42,6 +40,23 @@ export async function getFirebaseDoc(col: string, ref: string) {
   return docSnapshot.data();
 }
 
+export async function getFirebaseDataWithQuery(
+  col: string,
+  q: string,
+  qVal: string
+) {
+  console.log(qVal, "qval");
+  const colRef = collection(database, col);
+  const querySnapshot = await getDocs(query(colRef, where(q, "==", qVal)));
+
+  const response = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  return response;
+}
+
 export async function getFirebaseCollectionDataWithQueryAndOrder(
   col: string,
   type: string,
@@ -51,14 +66,6 @@ export async function getFirebaseCollectionDataWithQueryAndOrder(
   const querySnapshot = await getDocs(
     query(colRef, where("type", "==", type), orderBy(order))
   );
-export async function getFirebaseDataWithQuery(
-  col: string,
-  q: string,
-  qVal: string
-) {
-  console.log(qVal, "qval");
-  const colRef = collection(database, col);
-  const querySnapshot = await getDocs(query(colRef, where(q, "==", qVal)));
 
   const response = querySnapshot.docs.map((doc) => ({
     id: doc.id,
