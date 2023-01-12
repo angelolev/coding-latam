@@ -1,43 +1,32 @@
 import { NextPage } from "next";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { CategoryFilter, LessonCard } from "../components";
 import { Hero } from "../components/Hero";
 import { ILesson } from "../models";
-import { getFirebaseData, getFirebaseDataOrdered } from "../utils";
+import { AppStore } from "../store";
+import { setLessons } from "../store/slices/lessons";
+import {
+  getFirebaseData,
+  getFirebaseDataOrdered,
+  getLessonsFiltered,
+} from "../utils";
 
 interface LessonsPageProps {
   lessons: ILesson[];
 }
-// import LessonCard from "../../components/lessons/LessonCard";
-// import CardSkeleton from "../../components/commons/Skeletons/CardSkeleton";
-// import CategoryFilter from "../../components/commons/Filters/CategoryFilter";
-// import heroImage from "../../components/lessons/studygroup.svg";
-// import { useDispatch, useSelector } from "react-redux";
-// import {
-//   getLessonsFirebase,
-//   getLessonsFiltered,
-// } from "../../services/lessons-service";
-// import { useParams } from "react-router";
 
 const Lessons: NextPage<LessonsPageProps> = ({ lessons }) => {
-  console.log(lessons, "clases");
-  //   const dispatch = useDispatch();
-  //   const sessions = useSelector((state) => state.lessons);
-  const [currentType, setCurrentType] = useState(null);
-  //   const { type } = useParams();
+  console.log(lessons, "les");
+  const dispatch = useDispatch();
+  const stateLessons = useSelector((store: AppStore) => store.lessons);
 
-  //   useEffect(() => {
-  //     window.scrollTo(0, 0);
-  //     if (type) {
-  //       setCurrentType(type);
-  //       dispatch(getLessonsFiltered(type));
-  //     } else {
-  //       dispatch(getLessonsFirebase());
-  //     }
-  //   }, [type, dispatch]);
+  useEffect(() => {
+    dispatch(setLessons(lessons));
+  }, [dispatch, lessons]);
 
-  const handleFilter = (type) => {
-    // dispatch(getLessonsFiltered(type));
+  const handleFilter = (type: string) => {
+    dispatch(getLessonsFiltered(type));
   };
 
   const lessonsCategories = [
@@ -65,19 +54,7 @@ const Lessons: NextPage<LessonsPageProps> = ({ lessons }) => {
 
   return (
     <>
-      {!currentType ? (
-        // <Hero title={`Clases Disponibles`} image={heroImage} />
-        <Hero
-          title="Mejora tu aprendizaje con los grupos de estudio"
-          image="study.png"
-        />
-      ) : (
-        // <Hero title={`Curso de ${type}`} image={heroImage} />
-        <Hero
-          title="Mejora tu aprendizaje con los grupos de estudio"
-          image="study.png"
-        />
-      )}
+      <Hero title="Clases disponibles" image="studygroup.svg" />
       <section className="lessons">
         <div className="container">
           <CategoryFilter
@@ -95,7 +72,7 @@ const Lessons: NextPage<LessonsPageProps> = ({ lessons }) => {
             </p>
           </div>
           <div className="lessons__list">
-            {lessons.map((lesson) => (
+            {stateLessons.map((lesson) => (
               <LessonCard
                 key={lesson.id}
                 id={lesson.id}

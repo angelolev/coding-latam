@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export interface NavInterface {}
 
 const Nav: React.FC<NavInterface> = () => {
+  const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false);
+
   const goToHome = () => {
     window.location.href = "/";
+  };
+
+  const toggleMenu = () => {
+    setIsMenuVisible(!isMenuVisible);
   };
 
   return (
@@ -35,7 +41,7 @@ const Nav: React.FC<NavInterface> = () => {
                 <li>
                   <Link href="/grupos">Grupos de estudio</Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="/mentor">Mentoría</Link>
                 </li>
                 <li>
@@ -50,18 +56,18 @@ const Nav: React.FC<NavInterface> = () => {
                     Blog
                   </a>
                 </li>
-                <li>
-                  {/* <Link href="/"> */}
-                  {/* <Image
+                <li> */}
+                {/* <Link href="/"> */}
+                {/* <Image
 						  src={currentUser.photoURL}
 						  alt={currentUser.displayName}
 						/> */}
 
-                  {/* {currentUser?.displayName
+                {/* {currentUser?.displayName
 						  ? currentUser.displayName
 						  : "Iniciar sesión"} */}
-                  {/* </Link> */}
-                </li>
+                {/* </Link> */}
+                {/* </li> */}
                 {/* {currentUser?.displayName ? (
 					  <li className="btn yellow logout" onClick={userLogout}>
 						Salir
@@ -72,24 +78,25 @@ const Nav: React.FC<NavInterface> = () => {
               </ul>
             </div>
             <div className="nav__button">
-              {/* <button className="btn yellow scrollable" onClick={showMenu}>
-					Menú
-				  </button> */}
+              <button className="btn yellow scrollable" onClick={toggleMenu}>
+                Menú
+              </button>
             </div>
           </div>
           <div className="nav__bottom">
-            <ul className="nav__menu fadeIn" id="navMenu">
-              {/* <button id="navClose" onClick={showMenu}>
-					X
-				  </button> */}
+            {isMenuVisible && (
+              <ul className="nav__menu fadeIn" id="navMenu">
+                <button id="navClose" onClick={toggleMenu}>
+                  X
+                </button>
 
-              <li>
-                <Link href="/clases">Clases</Link>
-              </li>
-              <li>
-                <Link href="/grupos">Grupos de estudio</Link>
-              </li>
-              <li>
+                <li>
+                  <Link href="/clases">Clases</Link>
+                </li>
+                <li>
+                  <Link href="/grupos">Grupos de estudio</Link>
+                </li>
+                {/* <li>
                 <Link href="/mentoria">Mentoría</Link>
               </li>
               <li>
@@ -103,25 +110,26 @@ const Nav: React.FC<NavInterface> = () => {
                 >
                   Blog
                 </a>
-              </li>
-              <li>
-                {/* <Link href="/"> */}
-                {/* <Image
-						src={currentUser.photoURL}
-						alt={currentUser.displayName}
-					  /> */}
+              </li> */}
+                <li>
+                  <Link href="/">
+                    <Image
+                      src={currentUser.photoURL}
+                      alt={currentUser.displayName}
+                    />
 
-                {/* {currentUser?.displayName
-						? currentUser.displayName
-						: "Iniciar sesión"} */}
-                {/* </Link> */}
-              </li>
-              {/* {currentUser?.displayName ? (
-					<li onClick={userLogout}>Salir</li>
-				  ) : (
-					false
-				  )} */}
-            </ul>
+                    {currentUser?.displayName
+                      ? currentUser.displayName
+                      : "Iniciar sesión"}
+                  </Link>
+                </li>
+                {currentUser?.displayName ? (
+                  <li onClick={userLogout}>Salir</li>
+                ) : (
+                  false
+                )}
+              </ul>
+            )}
           </div>
         </div>
       </div>

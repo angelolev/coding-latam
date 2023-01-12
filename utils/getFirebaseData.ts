@@ -8,6 +8,7 @@ import {
   where,
 } from "firebase/firestore";
 import { database } from "../firebase/client";
+import { setLessons } from "../store/slices/lessons";
 
 export async function getFirebaseData(col: string) {
   const querySnapshot = await getDocs(collection(database, col));
@@ -22,7 +23,9 @@ export async function getFirebaseData(col: string) {
 
 export async function getFirebaseDataOrdered(col: string, type: string) {
   const colRef = collection(database, col);
-  const querySnapshot = await getDocs(query(colRef, orderBy(type)));
+  const querySnapshot = await getDocs(
+    query(colRef, orderBy(type), orderBy("title"))
+  );
 
   const response = querySnapshot.docs.map((doc) => ({
     id: doc.id,
@@ -39,6 +42,15 @@ export async function getFirebaseDoc(col: string, ref: string) {
   return docSnapshot.data();
 }
 
+export async function getFirebaseCollectionDataWithQueryAndOrder(
+  col: string,
+  type: string,
+  order: string
+) {
+  const colRef = collection(database, col);
+  const querySnapshot = await getDocs(
+    query(colRef, where("type", "==", type), orderBy(order))
+  );
 export async function getFirebaseDataWithQuery(
   col: string,
   q: string,
@@ -55,3 +67,14 @@ export async function getFirebaseDataWithQuery(
 
   return response;
 }
+
+export const getLessonsFiltered = (type: string) => {
+  return async (dispatch) => {
+    const response = await getFirebaseCollectionDataWithQueryAndOrder(
+      "lessons",
+      type,
+      "title"
+    );
+    dispatch(setLessons(response));
+  };
+};
