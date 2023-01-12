@@ -13,7 +13,7 @@
 
           img {
             border-radius: 50%;
-            margin-right: .5rem;
+            margin-right: 0.5rem;
             max-width: 3.5rem;
           }
         }
@@ -29,7 +29,7 @@
   }
 
   &__content {
-    border-bottom: .1rem solid $color-gray;
+    border-bottom: 0.1rem solid $color-gray;
     padding: 1rem 1.5rem;
 
     @include breakpoint($sm) {
@@ -60,7 +60,7 @@
 
         &.logout {
           cursor: pointer;
-          padding: .5rem 1.5rem;
+          padding: 0.5rem 1.5rem;
         }
 
         a {
@@ -69,12 +69,12 @@
           text-decoration: none;
 
           &:after {
-            content: '';
+            content: "";
             display: block;
             width: 0;
-            height: .15rem;
+            height: 0.15rem;
             background: $color-blue-dark;
-            transition: width .3s;
+            transition: width 0.3s;
           }
 
           &:hover {
@@ -85,7 +85,7 @@
 
           img {
             border-radius: 50%;
-            margin-right: .5rem;
+            margin-right: 0.5rem;
             max-width: 3.5rem;
           }
 
@@ -126,44 +126,39 @@
   }
 
   &__menu {
-    display: none;
+    position: absolute;
+    top: 0;
+    background: #ffd665;
+    width: 100%;
+    left: 0;
+    height: 100vh;
+    z-index: 10;
+    text-align: center;
 
-    &.show {
-      display: block;
-      position: absolute;
-      top: 0;
-      background: #ffd665;
-      width: 100%;
-      left: 0;
-      height: 100vh;
-      z-index: 10;
-      text-align: center;
-
-      @include breakpoint($md) {
-        display: none;
-      }
-
-      button {
-        background-color: $color-blue-dark;
-        font-size: 2rem;
-        position: absolute;
-        right: 0;
-        padding: 1rem 2rem;
-      }
+    @include breakpoint($md) {
+      display: none;
     }
 
-    li {
-      display: block;
-      padding: 2rem 0;
+    button {
+      background-color: $color-blue-dark;
+      font-size: 2rem;
+      position: absolute;
+      right: 0;
+      padding: 1rem 2rem;
+    }
+  }
 
-      &:first-of-type {
-        margin-top: 4rem;
-      }
+  li {
+    display: block;
+    padding: 2rem 0;
 
-      a {
-        color: $color-blue-dark;
-        font-size: 2rem;
-      }
+    &:first-of-type {
+      margin-top: 4rem;
+    }
+
+    a {
+      color: $color-blue-dark;
+      font-size: 2rem;
     }
   }
 }
