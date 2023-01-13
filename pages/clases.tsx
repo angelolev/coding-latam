@@ -14,6 +14,7 @@ import {
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
+import { useAppDispatch } from "../store/hooks";
 
 interface LessonsPageProps {
   lessons: ILesson[];
@@ -21,7 +22,7 @@ interface LessonsPageProps {
 
 const Lessons: NextPage<LessonsPageProps> = ({ lessons }) => {
   const auth = getAuth();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const router = useRouter();
   const [user, loading] = useAuthState(auth);
   const stateLessons = useSelector((store: AppStore) => store.lessons);
