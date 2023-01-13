@@ -60,7 +60,7 @@ const groups = [
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Category[]>
+  res: NextApiResponse<ICategory[]>
 ) {
   res.status(200).json([...groups]);
 }
