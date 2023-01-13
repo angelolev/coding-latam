@@ -1,7 +1,7 @@
 export interface IBadge {
-    id: number;
-    elementClass: string;
-    handleClick: () => void;
-    name: string;
-    type: string;
+  id: number;
+  elementClass?: string;
+  handleClick?: any;
+  name: string;
+  type: string;
 }

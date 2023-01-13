@@ -4,7 +4,7 @@ import { Badge } from "../Badge";
 
 export interface CategoryFilterInterface {
   categories: IBadge[];
-  handleFilter: (type: string) => {};
+  handleFilter: any;
 }
 
 const CategoryFilter: React.FC<CategoryFilterInterface> = ({
