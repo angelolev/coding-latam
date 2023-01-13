@@ -10,6 +10,6 @@ export const getCurrentProvider = (provider: string) => {
     case "Github":
       return githubProvider;
     default:
-      break;
+      return googleProvider;
   }
 };
