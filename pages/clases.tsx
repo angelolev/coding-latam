@@ -11,14 +11,19 @@ import {
   getFirebaseDataOrdered,
   getLessonsFiltered,
 } from "../utils";
+import { useRouter } from "next/router";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth } from "firebase/auth";
 
 interface LessonsPageProps {
   lessons: ILesson[];
 }
 
 const Lessons: NextPage<LessonsPageProps> = ({ lessons }) => {
-  console.log(lessons, "les");
+  const auth = getAuth();
   const dispatch = useDispatch();
+  const router = useRouter();
+  const [user, loading] = useAuthState(auth);
   const stateLessons = useSelector((store: AppStore) => store.lessons);
 
   useEffect(() => {
@@ -51,6 +56,12 @@ const Lessons: NextPage<LessonsPageProps> = ({ lessons }) => {
       type: "flexbox",
     },
   ];
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    }
+  }, [user, router]);
 
   return (
     <>

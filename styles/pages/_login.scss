@@ -1,0 +1,34 @@
+.login {
+  padding: 50px 0;
+  text-align: center;
+
+  @include breakpoint($md) {
+    min-height: 400px;
+  }
+
+  p {
+    margin: 0 0 20px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    padding: 20px 10px;
+    width: 100%;
+
+    &.google {
+      background-color: #3498db;
+    }
+
+    &.github {
+      background-color: #121212;
+    }
+
+    .icon {
+      font-size: 20px;
+      margin-right: 10px;
+    }
+  }
+}

@@ -3,13 +3,13 @@
     ul {
       li {
         color: $color-blue-dark;
-        font-size: 2rem;
 
         a {
           display: flex;
           justify-content: center;
           align-items: center;
           max-width: 100%;
+          font-size: 1.4rem;
 
           img {
             border-radius: 50%;
@@ -64,7 +64,8 @@
         }
 
         a {
-          display: inline-block;
+          display: flex;
+          align-items: center;
           color: $color-blue-dark;
           text-decoration: none;
 
@@ -81,12 +82,6 @@
             &:after {
               width: 100%;
             }
-          }
-
-          img {
-            border-radius: 50%;
-            margin-right: 0.5rem;
-            max-width: 3.5rem;
           }
 
           // @media (prefers-color-scheme: dark) {
@@ -146,19 +141,33 @@
       right: 0;
       padding: 1rem 2rem;
     }
+
+    li {
+      display: block;
+      padding: 2rem 0;
+
+      &:first-of-type {
+        margin-top: 4rem;
+      }
+
+      a {
+        color: $color-blue-dark;
+        font-size: 2rem;
+      }
+    }
   }
 
-  li {
-    display: block;
-    padding: 2rem 0;
+  &__profile {
+    &-photo {
+      img {
+        border-radius: 50%;
+        margin-right: 5px !important;
+        max-width: 35px !important;
+      }
 
-    &:first-of-type {
-      margin-top: 4rem;
-    }
-
-    a {
-      color: $color-blue-dark;
-      font-size: 2rem;
+      span {
+        overflow: visible !important;
+      }
     }
   }
 }

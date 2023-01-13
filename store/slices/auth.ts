@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { IUser } from "../../models";
 
-const initialState = {
-  uid: null,
-  displayName: null,
-  photoURL: null,
+const initialState: IUser = {
+  displayName: "",
+  uid: "",
+  photoURL: "",
 };
 
 export const authSlice = createSlice({
@@ -11,11 +12,7 @@ export const authSlice = createSlice({
   initialState: initialState,
   reducers: {
     login: (state, action) => {
-      return {
-        uid: action.payload.uid,
-        displayName: action.payload.displayName,
-        photoURL: action.payload.photoURL,
-      };
+      return action.payload;
     },
     logout: (state, action) => {
       return initialState;

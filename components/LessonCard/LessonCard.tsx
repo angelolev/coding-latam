@@ -24,9 +24,6 @@ const LessonCard: React.FC<ILesson> = ({
         <Link href={`/clases/${id}`}>
           <a>Ver Ahora</a>
         </Link>
-        {/* <Link href={`/clases/${type}/${link}/${id}`}>
-          <a>Ver Ahora</a>
-        </Link> */}
       </div>
     </div>
   );

@@ -1,19 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth } from "firebase/auth";
+import { useRouter } from "next/router";
 
 export interface NavInterface {}
 
 const Nav: React.FC<NavInterface> = () => {
   const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false);
+  const [currentLink, setCurrentLink] = useState<string>("/login");
+  const auth = getAuth();
+  const router = useRouter();
+  const [user, loading] = useAuthState(auth);
 
   const goToHome = () => {
-    window.location.href = "/";
+    router.push("/");
   };
 
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);
   };
+
+  useEffect(() => {
+    if (user) {
+      setCurrentLink("/profile");
+    } else {
+      setCurrentLink("/login");
+    }
+  }, [user, router]);
 
   return (
     <nav className="nav">
@@ -27,7 +42,7 @@ const Nav: React.FC<NavInterface> = () => {
                   alt=""
                   width={50}
                   height={50}
-                  onClick={goToHome}
+                  onClick={() => goToHome}
                   className="nav__image"
                 />
               </div>
@@ -36,10 +51,14 @@ const Nav: React.FC<NavInterface> = () => {
             <div className="nav__links">
               <ul>
                 <li>
-                  <Link href="/clases">Clases</Link>
+                  <Link href="/clases">
+                    <a>Clases</a>
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/grupos">Grupos de estudio</Link>
+                  <Link href="/grupos">
+                    <a>Grupos de estudio</a>
+                  </Link>
                 </li>
                 {/* <li>
                   <Link href="/mentor">Mentoría</Link>
@@ -55,26 +74,35 @@ const Nav: React.FC<NavInterface> = () => {
                   >
                     Blog
                   </a>
-                </li>
-                <li> */}
-                {/* <Link href="/"> */}
-                {/* <Image
-						  src={currentUser.photoURL}
-						  alt={currentUser.displayName}
-						/> */}
+                </li> */}
+                <li>
+                  <Link href={currentLink}>
+                    <a>
+                      {user?.photoURL && (
+                        <div className="nav__profile-photo">
+                          <Image
+                            src={user.photoURL}
+                            alt={user.displayName}
+                            width={50}
+                            height={50}
+                          />
+                        </div>
+                      )}
 
-                {/* {currentUser?.displayName
-						  ? currentUser.displayName
-						  : "Iniciar sesión"} */}
-                {/* </Link> */}
-                {/* </li> */}
-                {/* {currentUser?.displayName ? (
-					  <li className="btn yellow logout" onClick={userLogout}>
-						Salir
-					  </li>
-					) : (
-					  false
-					)} */}
+                      {user?.displayName ? user.displayName : "Iniciar sesión"}
+                    </a>
+                  </Link>
+                </li>
+                {user?.displayName ? (
+                  <li
+                    className="btn yellow logout"
+                    onClick={() => auth.signOut()}
+                  >
+                    Salir
+                  </li>
+                ) : (
+                  false
+                )}
               </ul>
             </div>
             <div className="nav__button">
@@ -112,19 +140,25 @@ const Nav: React.FC<NavInterface> = () => {
                 </a>
               </li> */}
                 <li>
-                  <Link href="/">
-                    <Image
-                      src={currentUser.photoURL}
-                      alt={currentUser.displayName}
-                    />
+                  <Link href={currentLink}>
+                    <a>
+                      {user?.photoURL && (
+                        <div className="nav__profile-photo">
+                          <Image
+                            src={user.photoURL}
+                            alt={user.displayName}
+                            width={50}
+                            height={50}
+                          />
+                        </div>
+                      )}
 
-                    {currentUser?.displayName
-                      ? currentUser.displayName
-                      : "Iniciar sesión"}
+                      {user?.displayName ? user.displayName : "Iniciar sesión"}
+                    </a>
                   </Link>
                 </li>
-                {currentUser?.displayName ? (
-                  <li onClick={userLogout}>Salir</li>
+                {user?.displayName ? (
+                  <li onClick={() => auth.signOut()}>Salir</li>
                 ) : (
                   false
                 )}
