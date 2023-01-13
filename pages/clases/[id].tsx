@@ -94,7 +94,7 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: any) {
   const lesson = await getFirebaseDoc("lessons", params.id);
   const resources = await getFirebaseDataWithQuery(
     "resources",
