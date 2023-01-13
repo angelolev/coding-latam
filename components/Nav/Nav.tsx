@@ -146,7 +146,7 @@ const Nav: React.FC<NavInterface> = () => {
                         <div className="nav__profile-photo">
                           <Image
                             src={user.photoURL}
-                            alt={user.displayName}
+                            alt={user.displayName || "User"}
                             width={50}
                             height={50}
                           />
