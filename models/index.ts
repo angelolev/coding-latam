@@ -1,7 +1,6 @@
 export * from "./badge";
 export * from "./category";
 export * from "./lesson";
-export * from "./localstorage";
 export * from "./recommended-course";
 export * from "./resource";
 export * from "./social-icon";
