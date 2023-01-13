@@ -76,7 +76,7 @@ export async function getFirebaseCollectionDataWithQueryAndOrder(
 }
 
 export const getLessonsFiltered = (type: string) => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     const response = await getFirebaseCollectionDataWithQueryAndOrder(
       "lessons",
       type,
