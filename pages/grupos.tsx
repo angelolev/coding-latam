@@ -1,10 +1,15 @@
-import { IStudyGroup } from "../models";
+import { IBadge, IStudyGroup } from "../models";
 import { Hero } from "../components/Hero";
 import { NextPage } from "next";
 import { CategoryFilter, StudyGroup } from "../components";
 import { getFirebaseData } from "../utils";
 
-const Groups: NextPage = ({ categories, groups }) => {
+interface GroupsPageProps {
+  categories: IBadge[];
+  groups: IStudyGroup[];
+}
+
+const Groups: NextPage<GroupsPageProps> = ({ categories, groups }) => {
   const handleFilter = () => {
     console.log("filtrando");
   };
