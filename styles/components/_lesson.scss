@@ -9,11 +9,12 @@
   // }
 
   @include breakpoint($sm) {
-    max-width: 270px;
+    max-width: 265px;
   }
 
   @include breakpoint($md) {
     margin: 0 25px 30px 0;
+    max-width: 270px;
   }
 
   img {

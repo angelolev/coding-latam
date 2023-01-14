@@ -1,16 +1,12 @@
 import { NextPage } from "next";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { CategoryFilter, LessonCard } from "../components";
 import { Hero } from "../components/Hero";
 import { ILesson } from "../models";
 import { AppStore } from "../store";
 import { setLessons } from "../store/slices/lessons";
-import {
-  getFirebaseData,
-  getFirebaseDataOrdered,
-  getLessonsFiltered,
-} from "../utils";
+import { getFirebaseDataOrdered, getLessonsFiltered } from "../utils";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
@@ -60,7 +56,7 @@ const Lessons: NextPage<LessonsPageProps> = ({ lessons }) => {
 
   useEffect(() => {
     if (!user) {
-      router.push("/");
+      router.replace("/login");
     }
   }, [user, router]);
 

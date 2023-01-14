@@ -1,10 +1,11 @@
 const admin = require("firebase-admin");
 
-const serviceAccount = require("./firebase-keys.json");
+// const serviceAccount = require("./firebase-keys");
+import { secrets } from "./firebase-keys";
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://coding-latam.firebaseio.com"
+  credential: admin.credential.cert(secrets),
+  databaseURL: "https://coding-latam.firebaseio.com",
 });
 
-export const firestore = admin.firestore()
+export const firestore = admin.firestore();
