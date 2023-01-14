@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: flex-start;
     margin: 0 auto 30px;
+    gap: 1rem;
 
     @include breakpoint($md) {
       margin: 0 auto 20px;
@@ -62,7 +63,7 @@
 }
 
 .lesson-resources {
-  padding: 0 20px 30px;
+  padding: 0;
 
   @include breakpoint($md) {
     padding: 0 0 30px;

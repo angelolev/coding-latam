@@ -5,7 +5,7 @@ const Membership: React.FC<MembershipInterface> = () => {
   return (
     <div className="membership">
       <div className="membership__description">
-        <h3>¿Te pareció interesante?</h3>
+        <h3>¿Te gusta el contenido?</h3>
         {/* <p>
 			  Obtén seguimiento personal y mentoría 1 a 1 con nuestros intructores.
 			</p>
@@ -21,13 +21,13 @@ const Membership: React.FC<MembershipInterface> = () => {
       </div>
       <div className="membership__list">
         <div className="membership__item">
-          <i className="icon icon-patreon"></i>{" "}
+          <i className="icon icon-telegram"></i>{" "}
           <a
             target="_blank"
-            href="https://www.patreon.com/codinglatam"
+            href="https://t.me/+VcepnMQ4xg8o5Tai"
             rel="noopener noreferrer"
           >
-            Patreon
+            Telegram
           </a>
         </div>
         <div className="membership__item">

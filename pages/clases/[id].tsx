@@ -49,23 +49,6 @@ const Lesson: NextPage<LessonPageProps> = ({ lesson, resources }) => {
               <a>Regresar</a>
             </Link>
           </div>
-          <div className="lesson-resources">
-            <div className="lesson-resources__title">
-              <h3>Recursos de la clase</h3>
-            </div>
-            <div className="lesson-resources__list">
-              {resources.map((resource: IResource) => {
-                return (
-                  <Resource
-                    id={resource.id}
-                    key={resource.id}
-                    link={resource.link}
-                    title={resource.title}
-                  />
-                );
-              })}
-            </div>
-          </div>
         </>
       </div>
       <div className="lesson__video-resources">
@@ -91,6 +74,23 @@ const Lesson: NextPage<LessonPageProps> = ({ lesson, resources }) => {
             })}
           </div>
         </div> */}
+        <div className="lesson-resources">
+          <div className="lesson-resources__title">
+            <h3>Recursos de la clase</h3>
+          </div>
+          <div className="lesson-resources__list">
+            {resources.map((resource: IResource) => {
+              return (
+                <Resource
+                  id={resource.id}
+                  key={resource.id}
+                  link={resource.link}
+                  title={resource.title}
+                />
+              );
+            })}
+          </div>
+        </div>
         <Membership />
         {/* <Certification /> */}
       </div>
