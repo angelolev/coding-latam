@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 import Link from "next/link";
 import React from "react";
-import { Membership, Resource } from "../../components";
-import { ILesson, IResource } from "../../models";
+import { Membership, Question, Resource } from "../../components";
+import { ILesson, IQuestion, IResource } from "../../models";
 import {
   getFirebaseData,
   getFirebaseDataWithQuery,
@@ -15,7 +15,6 @@ interface LessonPageProps {
 }
 
 const Lesson: NextPage<LessonPageProps> = ({ lesson, resources }) => {
-  console.log(resources, "xd");
   return (
     <section className="lesson__video">
       <div className="container"></div>
@@ -61,22 +60,31 @@ const Lesson: NextPage<LessonPageProps> = ({ lesson, resources }) => {
               })}
             </div>
           </div>
-          {/* <Articles lessonId={lesson.id} /> */}
         </>
       </div>
       <div className="lesson__video-resources">
-        {/* {lesson ? (
-          <>
-            <Questions
-              questions={questions}
-              addNewQuestion={handleAddNewQuestion}
-              handleLikeQuestion={handleLikeQuestion}
-            />
-          </>
-        ) : (
-          <h3>Cargando</h3>
-        )} */}
-
+        {/* <div className="questions">
+          <div className="questions__title">
+            <h3>Preguntas de la clase</h3>
+            <p>Tienes alguna duda? Déjala aquí:</p>
+          </div>
+          <div className="questions__form-new-question">
+            <FormAddQuestion addNewQuestion={handleAddNewQuestion} />
+          </div>
+          <div className="questions__list">
+            {lesson.questions?.map((question: IQuestion) => {
+              return (
+                <Question
+                  id={question.id}
+                  key={question.id}
+                  title={question.title}
+                  handleLikeQuestion={() => handleLikeQuestion(question.id)}
+                  handleAddNewComment={() => handleAddNewComment(question.id)}
+                />
+              );
+            })}
+          </div>
+        </div> */}
         <Membership />
         {/* <Certification /> */}
       </div>

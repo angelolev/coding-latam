@@ -8,6 +8,7 @@ export * from "./JoinUs";
 export * from "./LessonCard";
 export * from "./Membership";
 export * from "./Nav";
+export * from "./Question";
 export * from "./Resource";
 export * from "./SocialIcon";
 export * from "./StudyGroup";

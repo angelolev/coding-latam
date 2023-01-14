@@ -47,7 +47,6 @@ export async function getFirebaseDataWithQuery(
   q: string,
   qVal: string
 ) {
-  console.log(qVal, "qval");
   const colRef = collection(database, col);
   const querySnapshot = await getDocs(query(colRef, where(q, "==", qVal)));
 
