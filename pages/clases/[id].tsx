@@ -40,7 +40,7 @@ const Lesson: NextPage<LessonPageProps> = ({ lesson, resources }) => {
             <p>{lesson.description}</p>
           </div>
           <div className="lesson__video-link">
-            <Link href={`/clases/${lesson.type}`}>
+            <Link href={`/clases`}>
               <a>Regresar</a>
             </Link>
           </div>

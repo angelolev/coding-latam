@@ -161,7 +161,6 @@
     &-photo {
       img {
         border-radius: 50%;
-        margin-right: 5px !important;
         max-width: 35px !important;
       }
 
@@ -169,5 +168,9 @@
         overflow: visible !important;
       }
     }
+  }
+
+  &__user {
+    margin-left: 0.5rem;
   }
 }

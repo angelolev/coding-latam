@@ -23,7 +23,9 @@ export async function getFirebaseData(col: string) {
 
 export async function getFirebaseDataOrdered(col: string, type: string) {
   const colRef = collection(database, col);
-  const querySnapshot = await getDocs(query(colRef, orderBy(type)));
+  const querySnapshot = await getDocs(
+    query(colRef, orderBy(type), orderBy("title"))
+  );
 
   const response = querySnapshot.docs.map((doc) => ({
     id: doc.id,

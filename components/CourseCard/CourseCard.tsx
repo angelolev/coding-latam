@@ -29,7 +29,13 @@ const CourseCard: React.FC<IRecommendedCourse> = ({
         </span>
       )}
       <div className="recommended-courses__course-image">
-        <Image src={`/images/${image}`} width={245} height={163} alt="" />
+        <Image
+          layout="responsive"
+          src={`/images/${image}`}
+          width={245}
+          height={163}
+          alt=""
+        />
       </div>
       <div className="recommended-courses__course-title">
         <h3>{title}</h3>

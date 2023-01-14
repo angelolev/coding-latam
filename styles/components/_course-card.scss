@@ -1,103 +1,103 @@
 .recommended-courses__course {
-    background-color: $color-white;
-    box-shadow: 0 .2rem 1.2rem 0 rgba(60, 60, 60, 0.1);
-    cursor: pointer;
-    margin: 0 auto 3rem;
-    max-width: 29rem;
-    padding: 1rem 1.5rem;
-    position: relative;
-    transition: all ease 500ms;
-    min-height: 35rem;
-  
-    &:hover {
-      // outline: auto;
-      // outline-color: $color-primary;
-      transform: translateY(-0.25rem);
-      box-shadow: 0 .2rem 1.2rem 0 rgba(60, 60, 60, 0.42);
-    }
-  
-    &.unavailable {
-      //background-color: hsla(0, 0.8%, 51%, 0.05);
-      pointer-events: none;
-    }
-  
-    @include breakpoint($sm) {
-      max-width: 31rem;
-    }
-  
-    @include breakpoint($md) {
-      width: 35rem;
-    }
-  
-    @include breakpoint($lg) {
-      max-width: 27.5rem;
-    }
-  
-    &-title {
-      min-height: 5rem;
+  background-color: $color-white;
+  box-shadow: 0 0.2rem 1.2rem 0 rgba(60, 60, 60, 0.1);
+  cursor: pointer;
+  margin: 0 auto 3rem;
+  max-width: 29rem;
+  padding: 1rem 1.5rem;
+  position: relative;
+  transition: all ease 500ms;
+  min-height: 35rem;
 
-      h3 {
-        font-size: 1.8rem;
-        font-weight: bold;
-        margin: .5rem 0 1.5rem;
-  
-        @include breakpoint($sm) {
-          font-size: 1.6rem;
-        }
-  
-        @include breakpoint($md) {
-          font-size: 1.8rem;
-        }
-  
-        @media (prefers-color-scheme: dark) {
-          color: $color-blue-dark;
-        }
-      }
-    }
-  
-    &-description {
-      @include breakpoint($md) {
-        min-height: 7.5rem;
-      }
-  
-      p {
-        font-size: 1.4rem;
-        line-height: 2rem;
-        margin-bottom: 2rem;
-  
-        @include breakpoint($md) {
-          font-size: 1.6rem;
-        }
-  
-        @media (prefers-color-scheme: dark) {
-          color: $color-blue-dark;
-        }
-      }
-    }
-  
-    &-button {
-      a {
-        display: block;
+  &:hover {
+    // outline: auto;
+    // outline-color: $color-primary;
+    transform: translateY(-0.25rem);
+    box-shadow: 0 0.2rem 1.2rem 0 rgba(60, 60, 60, 0.42);
+  }
+
+  &.unavailable {
+    //background-color: hsla(0, 0.8%, 51%, 0.05);
+    pointer-events: none;
+  }
+
+  @include breakpoint($sm) {
+    max-width: 31rem;
+  }
+
+  @include breakpoint($md) {
+    width: 35rem;
+  }
+
+  @include breakpoint($lg) {
+    max-width: 27.5rem;
+  }
+
+  &-title {
+    min-height: 5rem;
+
+    h3 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 0.5rem 0 1.5rem;
+
+      @include breakpoint($sm) {
         font-size: 1.6rem;
-        margin-left: auto;
-        max-width: 11rem;
-        padding: .8rem;
-        text-align: center;
-        width: auto;
       }
-    }
-  
-    &-status {
-      background: salmon;
-      color: $color-white;
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      padding: .8rem 1.5rem;
-  
-      &.available {
-        background-color: #27ae60;
+
+      @include breakpoint($md) {
+        font-size: 1.8rem;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        color: $color-blue-dark;
       }
     }
   }
-  
+
+  &-description {
+    @include breakpoint($md) {
+      min-height: 7.5rem;
+    }
+
+    p {
+      font-size: 1.4rem;
+      line-height: 2rem;
+      margin-bottom: 2rem;
+
+      @include breakpoint($md) {
+        font-size: 1.6rem;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        color: $color-blue-dark;
+      }
+    }
+  }
+
+  &-button {
+    a {
+      display: block;
+      font-size: 1.6rem;
+      margin-left: auto;
+      max-width: 11rem;
+      padding: 0.8rem;
+      text-align: center;
+      width: auto;
+    }
+  }
+
+  &-status {
+    background: salmon;
+    color: $color-white;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    z-index: 100;
+
+    &.available {
+      background-color: #27ae60;
+    }
+  }
+}

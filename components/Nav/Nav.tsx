@@ -36,7 +36,7 @@ const Nav: React.FC<NavInterface> = () => {
         <div className="nav__content">
           <div className="nav__top">
             <div className="nav__logo" id="burger">
-              <div className="nav__image">
+              <div className="nav__image" onClick={goToHome}>
                 <Image
                   src="/images/logo.png"
                   alt=""
@@ -89,7 +89,11 @@ const Nav: React.FC<NavInterface> = () => {
                         </div>
                       )}
 
-                      {user?.displayName ? user.displayName : "Iniciar sesión"}
+                      <span className="nav__user">
+                        {user?.displayName
+                          ? user.displayName
+                          : "Iniciar sesión"}
+                      </span>
                     </a>
                   </Link>
                 </li>
@@ -119,10 +123,14 @@ const Nav: React.FC<NavInterface> = () => {
                 </button>
 
                 <li>
-                  <Link href="/clases">Clases</Link>
+                  <Link href="/clases">
+                    <a onClick={toggleMenu}>Clases</a>
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/grupos">Grupos de estudio</Link>
+                  <Link href="/grupos">
+                    <a onClick={toggleMenu}>Grupos de estudio</a>
+                  </Link>
                 </li>
                 {/* <li>
                 <Link href="/mentoria">Mentoría</Link>
@@ -141,7 +149,7 @@ const Nav: React.FC<NavInterface> = () => {
               </li> */}
                 <li>
                   <Link href={currentLink}>
-                    <a>
+                    <a onClick={toggleMenu}>
                       {user?.photoURL && (
                         <div className="nav__profile-photo">
                           <Image
@@ -153,7 +161,11 @@ const Nav: React.FC<NavInterface> = () => {
                         </div>
                       )}
 
-                      {user?.displayName ? user.displayName : "Iniciar sesión"}
+                      <span className="nav__user">
+                        {user?.displayName
+                          ? user.displayName
+                          : "Iniciar sesión"}
+                      </span>
                     </a>
                   </Link>
                 </li>
