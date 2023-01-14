@@ -14,6 +14,10 @@ interface LessonPageProps {
   resources: IResource[];
 }
 
+const normalizeDescription = (description: string) => {
+  return { __html: description.replaceAll("\\n", "<br /><br />") };
+};
+
 const Lesson: NextPage<LessonPageProps> = ({ lesson, resources }) => {
   return (
     <section className="lesson__video">
@@ -36,7 +40,9 @@ const Lesson: NextPage<LessonPageProps> = ({ lesson, resources }) => {
           ></iframe>
           <div className="lesson__video-info">
             <h2>{lesson.title}</h2>
-            <p>{lesson.description}</p>
+            <p
+              dangerouslySetInnerHTML={normalizeDescription(lesson.description)}
+            ></p>
           </div>
           <div className="lesson__video-link">
             <Link href={`/clases`}>

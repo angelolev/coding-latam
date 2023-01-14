@@ -18,7 +18,7 @@ const LessonCard: React.FC<ILesson> = ({
       </div>
       <div className="lesson__description">
         <h4>{title}</h4>
-        <p>{description}</p>
+        <p>{description.substring(0, 130)}...</p>
       </div>
       <div className="lesson__link">
         <Link href={`/clases/${id}`}>
