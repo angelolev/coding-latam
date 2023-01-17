@@ -23,6 +23,10 @@
   &__likes {
     .icon {
       cursor: pointer;
+
+      &.active {
+        color: #fbc531;
+      }
     }
   }
 
@@ -54,6 +58,8 @@
 .questions {
   &__list {
     padding: 5px 0;
+    max-height: 300px;
+    overflow-y: scroll;
   }
 }
 

@@ -1,3 +1,5 @@
+import { IUser } from "./user";
+
 export interface ILesson {
   id: number;
   type: string;
@@ -9,12 +11,15 @@ export interface ILesson {
 }
 
 export interface IQuestion {
+  uid?: string;
   id: string;
   title: string;
+  likes: number;
   comments?: IComment[];
 }
 
 export interface IComment {
   id: string;
   description: string;
+  user: IUser;
 }

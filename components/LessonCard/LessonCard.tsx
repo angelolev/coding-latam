@@ -14,7 +14,13 @@ const LessonCard: React.FC<ILesson> = ({
   return (
     <div className="lesson">
       <div className="lesson__image">
-        <Image src={getCourseImage(type)} width={270} height={180} alt="" />
+        <Image
+          layout="responsive"
+          src={getCourseImage(type)}
+          width={270}
+          height={180}
+          alt=""
+        />
       </div>
       <div className="lesson__description">
         <h4>{title}</h4>

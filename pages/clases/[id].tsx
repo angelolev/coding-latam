@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { Membership, Question, Resource } from "../../components";
 import { ILesson, IQuestion, IResource } from "../../models";
 import {
@@ -8,17 +8,48 @@ import {
   getFirebaseDataWithQuery,
   getFirebaseDoc,
 } from "../../utils";
+import { useForm } from "react-hook-form";
+import { collection, addDoc, onSnapshot, doc } from "firebase/firestore";
+import { database } from "../../firebase/client";
 
 interface LessonPageProps {
   lesson: ILesson;
   resources: IResource[];
+  questions: IQuestion[];
+  currentId: string;
 }
 
 const normalizeDescription = (description: string) => {
   return { __html: description.replaceAll("\\n", "<br /><br />") };
 };
 
-const Lesson: NextPage<LessonPageProps> = ({ lesson, resources }) => {
+const Lesson: NextPage<LessonPageProps> = ({
+  lesson,
+  resources,
+  questions,
+  currentId,
+}) => {
+  const [currentQuestions, setCurrentQuestions] = useState(questions);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = async (data: any) => {
+    const newQuestion = {
+      ...data,
+      lesson_id: currentId,
+      likes: 0,
+      comments: [],
+    };
+
+    await addDoc(collection(database, "questions"), newQuestion);
+    setCurrentQuestions([...questions, newQuestion]);
+    reset({ title: "" });
+  };
+
   return (
     <section className="lesson__video">
       <div className="container"></div>
@@ -52,28 +83,45 @@ const Lesson: NextPage<LessonPageProps> = ({ lesson, resources }) => {
         </>
       </div>
       <div className="lesson__video-resources">
-        {/* <div className="questions">
+        <div className="questions">
           <div className="questions__title">
             <h3>Preguntas de la clase</h3>
             <p>Tienes alguna duda? Déjala aquí:</p>
           </div>
           <div className="questions__form-new-question">
-            <FormAddQuestion addNewQuestion={handleAddNewQuestion} />
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <textarea
+                id="title"
+                rows={5}
+                cols={50}
+                {...register("title", { required: true, maxLength: 100 })}
+              />
+              {errors?.title?.type === "required" && (
+                <p className="error">Este campo es requerido</p>
+              )}
+              {errors?.title?.type === "maxLength" && (
+                <p className="error">First name cannot exceed 100 characters</p>
+              )}
+              <input className="btn yellow" type="submit" value="Agregar" />
+            </form>
+            {/* <FormAddQuestion addNewQuestion={handleAddNewQuestion} /> */}
           </div>
           <div className="questions__list">
-            {lesson.questions?.map((question: IQuestion) => {
+            {currentQuestions?.map((question: IQuestion) => {
               return (
                 <Question
                   id={question.id}
                   key={question.id}
                   title={question.title}
-                  handleLikeQuestion={() => handleLikeQuestion(question.id)}
-                  handleAddNewComment={() => handleAddNewComment(question.id)}
+                  comments={question.comments}
+                  likes={question.likes}
+                  // handleLikeQuestion={() => handleLikeQuestion(question.id)}
+                  // handleAddNewComment={() => handleAddNewComment(question.id)}
                 />
               );
             })}
           </div>
-        </div> */}
+        </div>
         <div className="lesson-resources">
           <div className="lesson-resources__title">
             <h3>Recursos de la clase</h3>
@@ -110,13 +158,19 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const lesson = await getFirebaseDoc("lessons", params.id);
+  const questions = await getFirebaseDataWithQuery(
+    "questions",
+    "lesson_id",
+    params.id
+  );
   const resources = await getFirebaseDataWithQuery(
     "resources",
     "session_id",
     params.id
   );
+  const currentId = params.id;
 
-  return { props: { lesson, resources } };
+  return { props: { lesson, resources, questions, currentId } };
 }
 
 export default Lesson;
