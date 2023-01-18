@@ -9,6 +9,7 @@ import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { doc, updateDoc, arrayUnion, onSnapshot } from "firebase/firestore";
 import { database } from "../../firebase/client";
+import Head from "next/head";
 
 interface QuestionPageProps {
   question: IQuestion;
@@ -54,6 +55,10 @@ const Question: NextPage<QuestionPageProps> = ({ question, currentId }) => {
 
   return (
     <>
+      <Head>
+        <title>{question.title}</title>
+        <meta name="description" content={question.title} />
+      </Head>
       <Hero
         title="Ayuda a la comunidad respondiendo dudas"
         image="studygroup.svg"
